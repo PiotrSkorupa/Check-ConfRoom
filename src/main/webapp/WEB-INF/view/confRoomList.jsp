@@ -4,6 +4,7 @@
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -113,12 +114,12 @@
                 <tr>
                     <td>${tempconfRoomModel.floor}</td>
                     <td>${tempconfRoomModel.name}</td>
-                    <td>${tempconfRoomModel.skypeVc}</td>
-                    <td>${tempconfRoomModel.hdmi}</td>
-                    <td>${tempconfRoomModel.lan}</td>
-                    <td>${tempconfRoomModel.labels}</td>
-                    <td>${tempconfRoomModel.remotes}</td>
-                    <td>${tempconfRoomModel.instruction}</td>
+                    <td>${tempconfRoomModel.skypeVc ? 'Yes' : 'No'}</td>
+                    <td>${tempconfRoomModel.hdmi ? 'Yes' : 'No'}</td>
+                    <td>${tempconfRoomModel.lan ? 'Yes' : 'No'}</td>
+                    <td>${tempconfRoomModel.labels ? 'Yes' : 'No'}</td>
+                    <td>${tempconfRoomModel.remotes ? 'Yes' : 'No'}</td>
+                    <td>${tempconfRoomModel.instruction ? 'Yes' : 'No'}</td>
                     <td>${tempconfRoomModel.comments}</td>
                     <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short"
                                          value = "${tempconfRoomModel.lastmodified}" /></td>
