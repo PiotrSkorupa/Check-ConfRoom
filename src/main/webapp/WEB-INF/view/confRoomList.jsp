@@ -3,6 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +26,7 @@
     </style>
 </head>
 <body>
-
+<% String login = request.getUserPrincipal().getName();%>
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -44,7 +45,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><form:form action="${pageContext.request.contextPath}/logout" method="post">
                     <span class="glyphicon glyphicon-log-out"></span>
-                    <input type="submit" class="navbar" value="Logout">
+                    <input type="submit" class="navbar" value="Logout <% out.print(login); %>">
                 </form:form>
                 </li>
             </ul>
@@ -103,7 +104,8 @@
                 <th>remotes</th>
                 <th>instruction</th>
                 <th>comments</th>
-
+                <th>last checked</th>
+                <th>checked by</th>
             </tr>
 
             <jsp:useBean id="confRoomModel" scope="request" type="java.util.List"/>
@@ -118,6 +120,9 @@
                     <td>${tempconfRoomModel.remotes}</td>
                     <td>${tempconfRoomModel.instruction}</td>
                     <td>${tempconfRoomModel.comments}</td>
+                    <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short"
+                                         value = "${tempconfRoomModel.lastmodified}" /></td>
+                    <td>${tempconfRoomModel.checkedby}</td>
 
                     <td><a href="/conf/update?confRoomId=${tempconfRoomModel.id}" class="btn btn-success">Update</a>
                         <security:authorize access="hasRole('ADMIN')">
