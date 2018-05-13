@@ -1,7 +1,6 @@
 package checkConferenceRoomApp.dto;
 
 import lombok.*;
-import org.springframework.data.annotation.Version;
 
 import java.sql.Timestamp;
 
@@ -34,7 +33,6 @@ public class ConfRoomDto {
 
     private String checkedby;
 
-    @Version
     private Timestamp lastmodified;
 
 

@@ -39,9 +39,6 @@ public class ConfRoomModel {
 
     private String checkedby;
 
-    @Version
     private Timestamp lastmodified;
-
-
 
 }

@@ -34,6 +34,12 @@ public class ConfRoomService {
     }
 
     @Transactional
+    public ConfRoomModel updateConfRoom(ConfRoomModel confRoomModel){
+        confRoomRepository.save(confRoomModel);
+        return confRoomModel;
+    }
+
+    @Transactional
     public void deleteConfRoom(int id) {
       confRoomRepository.deleteById(id);
     }

@@ -12,8 +12,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.scrollup').fadeIn();
+                } else {
+                    $('.scrollup').fadeOut();
+                }
+            });
+            $('.scrollup').click(function () {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 600);
+                return false;
+            });
+        });
+    </script>
     <style>
         .navbar {
             margin-bottom: 0;
@@ -113,13 +135,13 @@
             <c:forEach var="tempconfRoomModel" items="${confRoomModel}">
                 <tr>
                     <td>${tempconfRoomModel.floor}</td>
-                    <td>${tempconfRoomModel.name}</td>
-                    <td>${tempconfRoomModel.skypeVc ? 'Yes' : 'No'}</td>
-                    <td>${tempconfRoomModel.hdmi ? 'Yes' : 'No'}</td>
-                    <td>${tempconfRoomModel.lan ? 'Yes' : 'No'}</td>
-                    <td>${tempconfRoomModel.labels ? 'Yes' : 'No'}</td>
-                    <td>${tempconfRoomModel.remotes ? 'Yes' : 'No'}</td>
-                    <td>${tempconfRoomModel.instruction ? 'Yes' : 'No'}</td>
+                    <td style="font-style: oblique">${tempconfRoomModel.name}</td>
+                    <td>${tempconfRoomModel.skypeVc ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
+                    <td>${tempconfRoomModel.hdmi ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
+                    <td>${tempconfRoomModel.lan ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
+                    <td>${tempconfRoomModel.labels ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
+                    <td>${tempconfRoomModel.remotes ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
+                    <td>${tempconfRoomModel.instruction ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
                     <td>${tempconfRoomModel.comments}</td>
                     <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short"
                                          value = "${tempconfRoomModel.lastmodified}" /></td>
@@ -147,10 +169,31 @@
 </br>
 <p>Click <a href="${pageContext.request.contextPath}/conf/saveConf">here</a> to add new Conference Room</p>
 </div>
-</div><br><br>
-<footer class="container-fluid text-center">
-    <p>¯\(`_`)/¯</p>
-</footer>
+</div><br><br><br><br>
 
+<div class="w3-bottom w3-hide-medium">
+    <div class="w3-bar w3-white w3-center w3-padding-large w3-opacity-min w3-hover-opacity-off">
+        <a class="w3-bar-item w3-button"><form
+            <form:form action="${pageContext.request.contextPath}/conf/confRoomList/" method="get">
+                <input type="search" id="name" name="name"/>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form:form>
+            </form></a>
+        <a class="w3-bar-item w3-button" ><form
+            <form:form action="${pageContext.request.contextPath}/conf/confRoomListByFloor/" method="get">
+                <button type="submit" class="btn btn-default" name="floor" value="1">1</button>
+                <button type="submit" class="btn btn-default" name="floor" value="2">2</button>
+                <button type="submit" class="btn btn-default" name="floor" value="3">3</button>
+                <button type="submit" class="btn btn-default" name="floor" value="4">4</button>
+                <button type="submit" class="btn btn-default" name="floor" value="5">5</button>
+                <button type="submit" class="btn btn-default" name="floor" value="6">6</button>
+                <button type="submit" class="btn btn-default" name="floor" value="7">7</button>
+                <button type="submit" class="btn btn-default" name="floor" value="8">8</button>
+                <button class="btn btn-default" onclick="location.href='/conf'" type="button">All</button>
+            </form:form>
+            </form></a>
+        <a class="w3-bar-item w3-button w3-hover-black w3-right"><a href="#" class="scrollup"><i class="fa fa-arrow-circle-o-up" style="font-size:48px;color:slategrey"></i></a></a>
+    </div>
+</div>
 </body>
 </html>

@@ -28,8 +28,6 @@ public class ConfRoomController {
         return "confRoomList";
     }
 
-
-
     @GetMapping("/saveConf")
     public String addNewConfRoom(Model model){
         ConfRoomModel confRoomModel = new ConfRoomModel();

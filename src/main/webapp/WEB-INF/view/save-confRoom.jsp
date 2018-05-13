@@ -23,7 +23,7 @@
     <%--@elvariable id="confRoom" type="checkConferenceRoomApp.model.ConfRoomModel"--%>
     <form:form action="save" modelAttribute="confRoom" method="POST">
 
-        <form:hidden path="id"/>
+        <form:hidden path="id" />
         <form:hidden path="checkedby" value = "<%=request.getUserPrincipal().getName() %>" />
         <table>
             <tbody>
