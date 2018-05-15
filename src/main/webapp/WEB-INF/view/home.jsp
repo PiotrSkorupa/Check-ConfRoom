@@ -6,8 +6,15 @@
     <title>Home Page</title>
 </head>
 <body>
-<h1>Welcome!</h1>
+<h1>Welcome
 
+<% String login = request.getUserPrincipal().getName();
+out.print(login + "!");
+%>
+
+</h1>
+
+</br>
 <div class="main">
     <div class="main-menu">
         <ul>
@@ -16,9 +23,10 @@
             <li><a href="/admin">Admin Panel</a></li>
             </br>
             <li>
-            <form:form action="${pageContext.request.contextPath}/logout" method="GET">
-                <input type="submit" value="Logout">
-            </form:form>
+                <form:form action="${pageContext.request.contextPath}/logout" method="post">
+                    <span class="glyphicon glyphicon-log-out"></span>
+                    <input type="submit" class="navbar" value="Logout">
+                </form:form>
             </li>
         </ul>
     </div>

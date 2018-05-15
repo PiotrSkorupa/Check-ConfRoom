@@ -1,5 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Save ConfRoom</title>
@@ -18,11 +19,12 @@
 
 <div id="container">
     <h3>Save ConfRoom</h3>
-    <%--@elvariable id="confRoom" type="hello.model.ConfRoomModel"--%>
+
+    <%--@elvariable id="confRoom" type="checkConferenceRoomApp.model.ConfRoomModel"--%>
     <form:form action="save" modelAttribute="confRoom" method="POST">
 
-        <!-- need to associate this data with customer id -->
-        <form:hidden path="id"/>
+        <form:hidden path="id" />
+        <form:hidden path="checkedby" value = "<%=request.getUserPrincipal().getName() %>" />
         <table>
             <tbody>
             <tr>

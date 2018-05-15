@@ -1,13 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: pawel
-  Date: 22/03/2018
-  Time: 01:54
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -24,8 +17,9 @@
        onclick="window.location.href='admin/showUser';return false;"
        class="add-button">
 </security:authorize>
-   <form:form action="${pageContext.request.contextPath}/logout" method="post">
-       <input type="submit" value="logout">
-   </form:form>
+<form:form action="${pageContext.request.contextPath}/logout" method="post">
+    <span class="glyphicon glyphicon-log-out"></span>
+    <input type="submit" class="navbar" value="Logout">
+</form:form>
 </body>
 </html>
