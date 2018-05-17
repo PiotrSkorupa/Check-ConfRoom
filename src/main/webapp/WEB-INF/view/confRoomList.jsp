@@ -37,6 +37,15 @@
         });
     </script>
     <style>
+        body {
+            background-repeat:no-repeat;
+            -webkit-background-size:cover;
+            -moz-background-size:cover;
+            -o-background-size:cover;
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+        }
         .navbar {
             margin-bottom: 0;
             border-radius: 0;
@@ -168,6 +177,12 @@
 <p>Click <a href="${pageContext.request.contextPath}/home">here</a> to go Home</p>
 </br>
 <p>Click <a href="${pageContext.request.contextPath}/conf/saveConf">here</a> to add new Conference Room</p>
+
+<button class="btn btn-default" onclick="location.href='/conf/downloadReport'" type="button">Generate Report</button>
+<br>
+<br>
+<br>
+<br>
 </div>
 </div><br><br><br><br>
 

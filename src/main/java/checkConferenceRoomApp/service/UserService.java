@@ -21,7 +21,6 @@ public class UserService {
     @Autowired
     public UserService(UserRepository userRepository){
         this.userRepository = userRepository;
-
     }
 
     @Transactional

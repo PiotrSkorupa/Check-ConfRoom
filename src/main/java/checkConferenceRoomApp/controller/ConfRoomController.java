@@ -3,12 +3,18 @@ package checkConferenceRoomApp.controller;
 
 import checkConferenceRoomApp.model.ConfRoomModel;
 import checkConferenceRoomApp.service.ConfRoomService;
+import org.jxls.template.SimpleExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+
 import static java.util.Comparator.comparing;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -16,6 +22,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/conf")
 public class ConfRoomController {
+
 
     @Autowired
     private ConfRoomService confRoomService;
@@ -66,5 +73,20 @@ public class ConfRoomController {
         List<ConfRoomModel> allConfs = confRoomService.getConfsByName(name);
         model.addAttribute("confRoomModel", allConfs);
         return "confRoomList";
+    }
+
+    @RequestMapping(value = "/downloadReport", method = RequestMethod.GET)
+    public void reportToExcel(HttpServletResponse response) {
+        List<ConfRoomModel> confs = confRoomService.getAllConfRooms();
+        List<String> headers = Arrays.asList("floor", "name", "skypeVC", "hdmi", "lan", "labels", "remotes", "instruction", "comments", "last modified", "checked by");
+
+        try {
+            response.addHeader("Content-disposition", "attachment; filename=ConferenceRoomRaport.xls");
+            response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            new SimpleExporter().gridExport(headers, confs, "floor, name, skypeVc, hdmi, lan, labels, remotes, instruction, comments, lastmodified, checkedby", response.getOutputStream());
+            response.flushBuffer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
