@@ -178,7 +178,7 @@
 </br>
 <p>Click <a href="${pageContext.request.contextPath}/conf/saveConf">here</a> to add new Conference Room</p>
 
-<button class="btn btn-default" onclick="location.href='/conf/downloadReport'" type="button">Generate Report</button>
+
 <br>
 <br>
 <br>
@@ -204,9 +204,18 @@
                 <button type="submit" class="btn btn-default" name="floor" value="6">6</button>
                 <button type="submit" class="btn btn-default" name="floor" value="7">7</button>
                 <button type="submit" class="btn btn-default" name="floor" value="8">8</button>
-                <button class="btn btn-default" onclick="location.href='/conf'" type="button">All</button>
+                <button class="btn btn-basic" onclick="location.href='/conf'" type="button">All</button>
             </form:form>
             </form></a>
+        <a class="w3-bar-item w3-button" ><form>
+            <button class="btn btn-info" onclick="location.href='/conf/downloadReport'" type="button">Generate Report</button>
+            </form></a>
+
+        <a class="w3-bar-item w3-button" ><form>
+        <button class="btn btn-primary" onclick="location.href='/conf/sendEmail'" type="button">Send report via Email</button>
+    </form></a>
+
+
         <a class="w3-bar-item w3-button w3-hover-black w3-right"><a href="#" class="scrollup"><i class="fa fa-arrow-circle-o-up" style="font-size:48px;color:slategrey"></i></a></a>
     </div>
 </div>

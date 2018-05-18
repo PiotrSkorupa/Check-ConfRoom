@@ -81,7 +81,7 @@ public class ConfRoomController {
         List<String> headers = Arrays.asList("floor", "name", "skypeVC", "hdmi", "lan", "labels", "remotes", "instruction", "comments", "last modified", "checked by");
 
         try {
-            response.addHeader("Content-disposition", "attachment; filename=ConferenceRoomRaport.xls");
+            response.addHeader("Content-disposition", "attachment; filename=ConferenceRoomReport.xls");
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             new SimpleExporter().gridExport(headers, confs, "floor, name, skypeVc, hdmi, lan, labels, remotes, instruction, comments, lastmodified, checkedby", response.getOutputStream());
             response.flushBuffer();

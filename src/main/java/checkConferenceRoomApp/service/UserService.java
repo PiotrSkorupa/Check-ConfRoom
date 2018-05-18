@@ -62,6 +62,11 @@ public class UserService {
     }
 
     @Transactional
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Transactional
     public void deleteUser(int id) {
         userRepository.deleteById(id);
     }
