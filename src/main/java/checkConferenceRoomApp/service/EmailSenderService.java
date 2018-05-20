@@ -24,7 +24,7 @@ public class EmailSenderService implements EmailSender{
             message.setTo(to);
             message.setFrom("checkConfRoom@outlook.com");
             message.setSubject(title);
-            message.addAttachment("ConferenceRoomReport.xls", new ClassPathResource("conf/downloadReport"));
+            message.addAttachment("ConferenceRoomReport.xls", new ClassPathResource("reports/ConferenceRoomReport.xls"));
             message.setText(content, true);
 
         } catch (MessagingException e) {

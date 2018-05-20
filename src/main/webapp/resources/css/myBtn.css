@@ -60,11 +60,12 @@ div[class*=container] {
     height: 64px;
     line-height: 64px;
     transition: all 0.3s;
+}
 span {
     transition: all 0.3s;
     tranform: scale(1, 1);
 }
-}
+
 
 .btn::before, .btn::after {
     content: '';
@@ -191,7 +192,7 @@ span {
 
 /* BTN FIVE */
 .btn-five::before {
-    transition: transform 0.15s, 0.15s border-radius 0.15s;
+    transition: transform 0.15s, 0.15s, border-radius 0.15s;
     opacity: 0;
     background: rgba(255, 255, 255, 0.1);
     transform: scale(0.1, 0.1);
