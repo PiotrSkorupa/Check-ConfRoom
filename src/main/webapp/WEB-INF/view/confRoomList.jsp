@@ -19,6 +19,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/resources/css/loadStyle.css" >
     <script>
         $(document).ready(function () {
             $(window).scroll(function () {
@@ -37,6 +38,15 @@
         });
     </script>
     <style>
+        body {
+            background-repeat:no-repeat;
+            -webkit-background-size:cover;
+            -moz-background-size:cover;
+            -o-background-size:cover;
+            background-size:cover;
+            background-position:center;
+            background-attachment:fixed;
+        }
         .navbar {
             margin-bottom: 0;
             border-radius: 0;
@@ -65,6 +75,33 @@
                 <li class="active"><a href="${pageContext.request.contextPath}/home">Home</a></li>
                 <li><a href="#">About</a></li>
             </ul>
+
+            <ul class="nav navbar-nav">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                Send report via email
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Send report to:</h4>
+                        </div>
+                        <div class="modal-body">
+                            Patryk
+                            Piotrek
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="location.href='/conf/sendReport'">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </ul>
+
             <ul class="nav navbar-nav navbar-right">
                 <li><form:form action="${pageContext.request.contextPath}/logout" method="post">
                     <span class="glyphicon glyphicon-log-out"></span>
@@ -168,6 +205,12 @@
 <p>Click <a href="${pageContext.request.contextPath}/home">here</a> to go Home</p>
 </br>
 <p>Click <a href="${pageContext.request.contextPath}/conf/saveConf">here</a> to add new Conference Room</p>
+
+
+<br>
+<br>
+<br>
+<br>
 </div>
 </div><br><br><br><br>
 
@@ -189,11 +232,18 @@
                 <button type="submit" class="btn btn-default" name="floor" value="6">6</button>
                 <button type="submit" class="btn btn-default" name="floor" value="7">7</button>
                 <button type="submit" class="btn btn-default" name="floor" value="8">8</button>
-                <button class="btn btn-default" onclick="location.href='/conf'" type="button">All</button>
+                <button class="btn btn-basic" onclick="location.href='/conf'" type="button">All</button>
             </form:form>
             </form></a>
+        <a class="w3-bar-item w3-button" ><form>
+            <button class="btn btn-info" onclick="location.href='/conf/downloadReport'" type="button">Generate Report</button>
+            </form></a>
+
         <a class="w3-bar-item w3-button w3-hover-black w3-right"><a href="#" class="scrollup"><i class="fa fa-arrow-circle-o-up" style="font-size:48px;color:slategrey"></i></a></a>
     </div>
 </div>
+
+
+
 </body>
 </html>
