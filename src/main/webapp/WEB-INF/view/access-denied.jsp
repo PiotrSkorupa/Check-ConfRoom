@@ -15,6 +15,6 @@
 
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/home">Back to Home page</a>
+<a href="${pageContext.request.contextPath}/">Back to Home page</a>
 </body>
 </html>

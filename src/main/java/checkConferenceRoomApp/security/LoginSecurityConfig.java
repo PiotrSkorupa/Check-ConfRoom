@@ -13,6 +13,7 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin").access("hasRole('ROLE_ADMIN')")
+                .antMatchers("/conf").hasAnyRole("ADMIN", "USER")
                 .and()
                 .formLogin().loginPage("/login")
                 .defaultSuccessUrl("/home")
@@ -23,6 +24,5 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/access-denied");
-
     }
 }
