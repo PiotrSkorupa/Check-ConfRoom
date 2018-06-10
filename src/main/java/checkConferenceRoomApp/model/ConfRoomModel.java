@@ -41,10 +41,10 @@ public class ConfRoomModel {
 
     private String checkedby;
 
-    //private Timestamp lastmodified;
+    private Timestamp lastmodified;
 
-    @Temporal(TemporalType.TIMESTAMP)
+   /* @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "lastmodified", nullable = false)
     @LastModifiedDate
-    private Date lastmodified;
+    private Date lastmodified;*/
 }
