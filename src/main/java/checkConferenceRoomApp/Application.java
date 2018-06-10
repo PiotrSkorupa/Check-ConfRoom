@@ -51,6 +51,7 @@ public class Application extends SpringBootServletInitializer {
                     .build();
 
             confRoomRepository.save(confRoomModel);
+            confRoomRepository.addTimestamp();
         };
     }
 
