@@ -21,6 +21,7 @@ out.print(login + "!");
             <li><a href="/about">About</a></li>
             <li><a href="/conf">Conf Room Panel</a></li>
             <li><a href="/admin">Admin Panel</a></li>
+            <li><a href="/">Start</a></li>
             </br>
             <li>
                 <form:form action="${pageContext.request.contextPath}/logout" method="post">
