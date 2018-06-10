@@ -2,8 +2,10 @@ package checkConferenceRoomApp.model;
 
 
 import lombok.*;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.sql.Timestamp;
 
 @Getter
@@ -39,6 +41,10 @@ public class ConfRoomModel {
 
     private String checkedby;
 
-    private Timestamp lastmodified;
+    //private Timestamp lastmodified;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "lastmodified", nullable = false)
+    @LastModifiedDate
+    private Date lastmodified;
 }
