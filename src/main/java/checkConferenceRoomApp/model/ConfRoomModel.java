@@ -35,6 +35,12 @@ public class ConfRoomModel {
 
     private boolean labels;
 
+    private boolean markers;
+
+    private boolean sockets;
+
+    private boolean floorCondition;
+
     private String comments;
 
     private String checkedby;

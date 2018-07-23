@@ -155,17 +155,20 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <table class="table table-hover">
             <tr>
-                <th>floor</th>
-                <th>name</th>
-                <th>skypeVc</th>
-                <th>hdmi</th>
-                <th>lan</th>
-                <th>labels</th>
-                <th>remotes</th>
-                <th>instruction</th>
-                <th>comments</th>
-                <th>last checked</th>
-                <th>checked by</th>
+                <th>Floor</th>
+                <th>Name</th>
+                <th>VC</th>
+                <th>Hdmi</th>
+                <th>Lan</th>
+                <th>Labels</th>
+                <th>Remotes</th>
+                <th>Instruction</th>
+                <th>Sockets</th>
+                <th>Pens&Sponges</th>
+                <th>Floor condition</th>
+                <th>Comments</th>
+                <th>Last checked</th>
+                <th>Checked by</th>
             </tr>
 
             <jsp:useBean id="confRoomModel" scope="request" type="java.util.List"/>
@@ -179,6 +182,9 @@
                     <td>${tempconfRoomModel.labels ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
                     <td>${tempconfRoomModel.remotes ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
                     <td>${tempconfRoomModel.instruction ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
+                    <td>${tempconfRoomModel.sockets ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
+                    <td>${tempconfRoomModel.markers ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
+                    <td>${tempconfRoomModel.floorCondition ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
                     <td>${tempconfRoomModel.comments}</td>
                     <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short"
                                          value = "${tempconfRoomModel.lastmodified}" /></td>
