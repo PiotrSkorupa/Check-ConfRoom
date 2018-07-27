@@ -61,6 +61,18 @@
                 <td><form:checkbox path="instruction"/></td>
             </tr>
             <tr>
+                <td><label>Sockets:</label></td>
+                <td><form:checkbox path="sockets"/></td>
+            </tr>
+            <tr>
+                <td><label>Pens&Sponges:</label></td>
+                <td><form:checkbox path="markers"/></td>
+            </tr>
+            <tr>
+                <td><label>Floor condition:</label></td>
+                <td><form:checkbox path="floorCondition"/></td>
+            </tr>
+            <tr>
                 <td><label>Comments:</label></td>
                 <td><form:input path="comments"/></td>
             </tr>

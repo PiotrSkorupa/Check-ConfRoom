@@ -21,7 +21,7 @@ public class Application extends SpringBootServletInitializer {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(UserRepository userRepository, ConfRoomRepository confRoomRepository) {
+    public CommandLineRunner commandLineRunner(UserRepository userRepository) {
         return (String... args) -> {
             User user = new User();
             user.setUserName("admin");
@@ -33,12 +33,11 @@ public class Application extends SpringBootServletInitializer {
             UserRole userRole = new UserRole();
             userRole.setRole("ROLE_USER");
 
-            //user.setUserRoles(Arrays.asList(adminRole, userRole));
             user.setUserRoles(Arrays.asList(adminRole));
 
             userRepository.save(user);
 
-            ConfRoomModel confRoomModel = ConfRoomModel.builder()
+            /*ConfRoomModel confRoomModel = ConfRoomModel.builder()
                     .floor(1)
                     .name("Kraków")
                     .hdmi(true)
@@ -50,9 +49,8 @@ public class Application extends SpringBootServletInitializer {
                     .comments("comment")
                     .build();
 
-            confRoomRepository.save(confRoomModel);
+            confRoomRepository.save(confRoomModel);*/
         };
     }
-
 
 }

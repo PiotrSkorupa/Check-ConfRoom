@@ -19,12 +19,12 @@ public class UserService {
     private UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository){
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
     @Transactional
-    public void saveUser(UserDto userDto){
+    public void saveUser(UserDto userDto) {
         User user = MapUserDto(userDto);
         userRepository.save(user);
     }
@@ -34,7 +34,7 @@ public class UserService {
         userDto.getUserRoles().forEach(userRoles -> userRole.setRole(userRoles));
         List<UserRole> userRoles = new ArrayList<>();
         userRoles.add(userRole);
-        if(userDto.getUserId() == null) {
+        if (userDto.getUserId() == null) {
             User user = new User();
             user.setUserRoles(userRoles);
             user.setUserName(userDto.getUserName());
@@ -72,12 +72,12 @@ public class UserService {
     }
 
     @Transactional
-    public UserDto updateUser(int id){
-      User user = userRepository.findById(id);
-      List<String> userRoles = new ArrayList<>();
-      List<UserRole> userRoleList = user.getUserRoles();
+    public UserDto updateUser(int id) {
+        User user = userRepository.findById(id);
+        List<String> userRoles = new ArrayList<>();
+        List<UserRole> userRoleList = user.getUserRoles();
         for (UserRole userRole1 : userRoleList) {
-                userRoles.add(userRole1.getRole());
+            userRoles.add(userRole1.getRole());
         }
         UserDto userDto = new UserDto();
         userDto.setUserId(user.getUserId());
@@ -90,7 +90,7 @@ public class UserService {
     }
 
     @Transactional
-    public User findUser(int id){
+    public User findUser(int id) {
         return userRepository.findById(id);
     }
 }

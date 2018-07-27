@@ -2,9 +2,10 @@ package checkConferenceRoomApp.model;
 
 
 import lombok.*;
-
+import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.util.Date;
+
 
 @Getter
 @Setter
@@ -45,6 +46,9 @@ public class ConfRoomModel {
 
     private String checkedby;
 
-    private Timestamp lastmodified;
+    @UpdateTimestamp
+    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date lastmodified;
 
 }

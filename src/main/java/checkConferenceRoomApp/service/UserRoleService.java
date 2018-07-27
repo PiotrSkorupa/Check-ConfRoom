@@ -19,7 +19,7 @@ public class UserRoleService {
     }
 
     @Transactional
-    public void saveUserRole(List<UserRole> userRole){
+    public void saveUserRole(List<UserRole> userRole) {
         userRoleRepository.save(userRole);
     }
 

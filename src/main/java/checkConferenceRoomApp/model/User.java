@@ -28,8 +28,8 @@ public class User {
 
     private int enabled;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name="userOwner")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "userOwner")
     private List<UserRole> userRoles;
 
 

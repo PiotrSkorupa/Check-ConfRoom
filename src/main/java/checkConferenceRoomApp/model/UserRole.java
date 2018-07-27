@@ -22,7 +22,7 @@ public class UserRole {
     @Column
     private String role;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "userRoles")
     private User userOwner;
 

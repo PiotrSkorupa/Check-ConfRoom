@@ -20,32 +20,32 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @InitBinder
-    public void initBinder(WebDataBinder webDataBinder){
-        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
-        webDataBinder.registerCustomEditor(String.class,stringTrimmerEditor);
-    }
-
     @Autowired
     private UserService userService;
 
+    @InitBinder
+    public void initBinder(WebDataBinder webDataBinder) {
+        StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+        webDataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
+    }
+
     @GetMapping("")
-    public String adminPanel(){
+    public String adminPanel() {
         return "admin-panel";
     }
 
     @GetMapping("/saveUser")
-    public String showSaveUser(Model model){
+    public String showSaveUser(Model model) {
 
         User user = new User();
 
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "save-user";
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@Valid@ModelAttribute("user") UserDto user, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
+    public String saveUser(@Valid @ModelAttribute("user") UserDto user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             return "save-user";
         }
         userService.saveUser(user);
@@ -53,11 +53,11 @@ public class AdminController {
     }
 
     @GetMapping("/showUser")
-    public String showUser(Model model){
+    public String showUser(Model model) {
 
-      List<User> users = userService.getAllUsers();
-      System.out.println("USERS: " + users);
-      List<UserDto> userDto = new ArrayList<>();
+        List<User> users = userService.getAllUsers();
+        System.out.println("USERS: " + users);
+        List<UserDto> userDto = new ArrayList<>();
 
         for (User e : users) {
             List<UserRole> userRoleList = e.getUserRoles();
@@ -67,20 +67,20 @@ public class AdminController {
                 userDto.add(new UserDto(e.getUserId(), e.getUserName(), e.getPassword(), e.getEmail(), e.getEnabled(), userRoles));
             }
         }
-        model.addAttribute("userList",userDto);
+        model.addAttribute("userList", userDto);
         return "user-list";
     }
 
     @DeleteMapping("/deleteUser")
-    public String deleteUser(@RequestParam("userId") int id){
+    public String deleteUser(@RequestParam("userId") int id) {
         userService.deleteUser(id);
         return "redirect:/admin/showUser";
     }
 
     @GetMapping("/updateUser")
-    public String updateUser(@RequestParam("userId") int id, Model model){
+    public String updateUser(@RequestParam("userId") int id, Model model) {
         UserDto user = userService.updateUser(id);
-        model.addAttribute("user",user);
+        model.addAttribute("user", user);
         return "save-user";
     }
 }

@@ -13,7 +13,7 @@ public class EmailController {
     private final EmailSender emailSender;
 
     @Autowired
-    public EmailController(EmailSender emailSender){
+    public EmailController(EmailSender emailSender) {
         this.emailSender = emailSender;
     }
 
@@ -22,7 +22,7 @@ public class EmailController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String user = (String) auth.getPrincipal();
 
-        emailSender.sendEmail("piotrecom@op.pl", "Report from conference rooms review", "This report has been prepared by: " + user + "\n...................................\n" + "Do not replay - genereted automatically" );
+        emailSender.sendEmail("piotrecom@op.pl", "Report from conference rooms review", "This report has been prepared by: " + user + "\n...................................\n" + "Do not replay - genereted automatically");
         return "redirect:/home";
     }
 }

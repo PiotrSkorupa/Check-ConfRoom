@@ -1,4 +1,5 @@
 package checkConferenceRoomApp.service;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import checkConferenceRoomApp.repository.ConfRoomRepository;
@@ -13,7 +14,6 @@ import java.util.Optional;
 public class ConfRoomService {
 
 
-
     private ConfRoomRepository confRoomRepository;
 
     @Autowired
@@ -23,27 +23,27 @@ public class ConfRoomService {
 
 
     @Transactional
-    public List<ConfRoomModel> getAllConfRooms(){
+    public List<ConfRoomModel> getAllConfRooms() {
         List<ConfRoomModel> confRoomModel = new ArrayList<>();
-                confRoomRepository.findAll().forEach(confRoomModel1 -> confRoomModel.add(confRoomModel1));
+        confRoomRepository.findAll().forEach(confRoomModel1 -> confRoomModel.add(confRoomModel1));
         return confRoomModel;
     }
 
     @Transactional
-    public ConfRoomModel saveConfRoom(ConfRoomModel confRoomModel){
+    public ConfRoomModel saveConfRoom(ConfRoomModel confRoomModel) {
         confRoomRepository.save(confRoomModel);
         return confRoomModel;
     }
 
     @Transactional
-    public ConfRoomModel updateConfRoom(ConfRoomModel confRoomModel){
+    public ConfRoomModel updateConfRoom(ConfRoomModel confRoomModel) {
         confRoomRepository.save(confRoomModel);
         return confRoomModel;
     }
 
     @Transactional
     public void deleteConfRoom(int id) {
-      confRoomRepository.deleteById(id);
+        confRoomRepository.deleteById(id);
     }
 
     @Transactional

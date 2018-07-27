@@ -36,5 +36,4 @@ public class ConfRoomDto {
     private Timestamp lastmodified;
 
 
-
 }

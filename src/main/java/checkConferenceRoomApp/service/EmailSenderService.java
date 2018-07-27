@@ -11,7 +11,7 @@ import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 @Service
-public class EmailSenderService implements EmailSender{
+public class EmailSenderService implements EmailSender {
 
     @Autowired
     private JavaMailSender javaMailSender;

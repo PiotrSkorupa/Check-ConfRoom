@@ -80,13 +80,13 @@ public class ConfRoomController {
     @RequestMapping(value = "/downloadReport", method = RequestMethod.GET)
     public void downloadExcelReport(HttpServletResponse response) {
         List<ConfRoomModel> confs = confRoomService.getAllConfRooms();
-        List<String> headers = Arrays.asList("floor", "name", "skypeVC", "hdmi", "lan", "labels", "remotes", "instruction", "comments", "last modified", "checked by");
+        List<String> headers = Arrays.asList("floor", "name", "skypeVC", "hdmi", "lan", "labels", "remotes", "instruction", "sockets", "markers", "floorCondition", "comments", "last modified", "checked by");
         SimpleExporter exporter = new SimpleExporter();
 
         try {
             response.addHeader("Content-disposition", "attachment; filename=ConferenceRoomReport.xls");
             response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-            exporter.gridExport(headers, confs, "floor, name, skypeVc, hdmi, lan, labels, remotes, instruction, comments, lastmodified, checkedby", response.getOutputStream());
+            exporter.gridExport(headers, confs, "floor, name, skypeVc, hdmi, lan, labels, remotes, instruction, sockets, markers, floorCondition,comments, lastmodified, checkedby", response.getOutputStream());
             response.flushBuffer();
 
         } catch (IOException e) {
@@ -97,12 +97,12 @@ public class ConfRoomController {
     @RequestMapping(value = "/sendReport", method = RequestMethod.GET)
     public String sendExcelReport(HttpServletResponse response) {
         List<ConfRoomModel> confs = confRoomService.getAllConfRooms();
-        List<String> headers = Arrays.asList("floor", "name", "skypeVC", "hdmi", "lan", "labels", "remotes", "instruction", "comments", "last modified", "checked by");
+        List<String> headers = Arrays.asList("floor", "name", "skypeVC", "hdmi", "lan", "labels", "remotes", "instruction", "sockets", "markers", "floorCondition", "comments", "last modified", "checked by");
         SimpleExporter exporter = new SimpleExporter();
 
         try {
             OutputStream os1 = new FileOutputStream("src/main/resources/reports/ConferenceRoomReport.xls");
-            exporter.gridExport(headers, confs, "floor, name, skypeVc, hdmi, lan, labels, remotes, instruction, comments, lastmodified, checkedby", os1);
+            exporter.gridExport(headers, confs, "floor, name, skypeVc, hdmi, lan, labels, remotes, instruction, sockets, markers, floorCondition, comments, lastmodified, checkedby", os1);
 
         } catch (IOException e) {
             e.printStackTrace();
