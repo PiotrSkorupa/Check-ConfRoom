@@ -46,9 +46,9 @@ public class ConfRoomModel {
 
     private String checkedby;
 
-    @UpdateTimestamp
-    @Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
-    @Temporal(TemporalType.TIMESTAMP)
+    //@UpdateTimestamp
+    //@Column(columnDefinition = "TIMESTAMP WITH TIME ZONE")
+    //@Temporal(TemporalType.TIMESTAMP)
     private Date lastmodified;
 
 }
