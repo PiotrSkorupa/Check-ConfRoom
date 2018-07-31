@@ -5,4 +5,4 @@ rooms, create report of the status, send raport via email.
 
 Build on -Spring Boot -Spring Web -Spring Security -Spring JPA -JSP -PostgreSQL
 
-http://confroom-check.herokuapp.com
+http://check-confroom.herokuapp.com
