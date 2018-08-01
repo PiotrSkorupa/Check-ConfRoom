@@ -24,8 +24,8 @@ public class Application extends SpringBootServletInitializer {
     public CommandLineRunner commandLineRunner(UserRepository userRepository, ConfRoomRepository confRoomRepository) {
         return (String... args) -> {
             User user = new User();
-            user.setUserName("piotrek");
-            user.setPassword("admin");
+            user.setUserName("admin2");
+            user.setPassword("admin2");
 
             UserRole adminRole = new UserRole();
             adminRole.setRole("ROLE_ADMIN");
