@@ -20,7 +20,7 @@ public class Application extends SpringBootServletInitializer {
         SpringApplication.run(Application.class, args);
     }
 
-    @Bean
+/*    @Bean
     public CommandLineRunner commandLineRunner(UserRepository userRepository, ConfRoomRepository confRoomRepository) {
         return (String... args) -> {
             User user = new User();
@@ -51,6 +51,6 @@ public class Application extends SpringBootServletInitializer {
 
             confRoomRepository.save(confRoomModel);
         };
-    }
+    }*/
 
 }
