@@ -4,6 +4,17 @@
 <html>
 <head>
     <title>Check Conference Room</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-123135737-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-123135737-1');
+    </script>
+
 </head>
 <link rel="stylesheet" type="text/css" href="/resources/css/myBtn.css" >
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
