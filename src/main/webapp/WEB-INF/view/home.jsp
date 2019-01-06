@@ -5,31 +5,57 @@
 <head>
     <title>Home Page</title>
 </head>
+<link rel="stylesheet" type="text/css" href="/resources/css/myBtn.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        background-image: url(/resources/images/yumi.jpg);
+        background-repeat: no-repeat;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center;
+    }
+    h3 {
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        color: #cf1007;
+        position: fixed;
+        top: 1em;
+        left: 1em;
+    }
+</style>
 <body>
-<h1>Welcome
 
-<% String login = request.getUserPrincipal().getName();
-out.print(login + "!");
-%>
+<h3><% String login = request.getUserPrincipal().getName();
+    out.print("Hello " +login + "!");%>
+</h3>
 
-</h1>
 
-</br>
-<div class="main">
-    <div class="main-menu">
-        <ul>
-            <li><a href="/about">About</a></li>
-            <li><a href="/conf">Conf Room Panel</a></li>
-            <li><a href="/admin">Admin Panel</a></li>
-            <li><a href="/">Start</a></li>
-            </br>
-            <li>
-                <form:form action="${pageContext.request.contextPath}/logout" method="post">
-                    <span class="glyphicon glyphicon-log-out"></span>
-                    <input type="submit" class="navbar" value="Logout">
-                </form:form>
-            </li>
-        </ul>
+<div class="col">
+    <div class="container-1">
+        <a class="btn btn-two" href="/check-confroom/conf">
+            <span>Conference Rooms Panel</span>
+        </a>
+    </div>
+
+    <div class=" container-1">
+        <a class="btn btn-two" href="/check-confroom/admin">
+            <span>Admin Panel</span>
+        </a>
+    </div>
+
+    <div class="container-1">
+        <a class="btn btn-two" href="/check-confroom/">
+            <span>Start Panel</span>
+        </a>
+    </div>
+
+    <div class="container-5">
+        <a class="btn btn-four" href="/check-confroom/login?logout">
+            <span>LOGOUT</span>
+        </a>
     </div>
 </div>
 

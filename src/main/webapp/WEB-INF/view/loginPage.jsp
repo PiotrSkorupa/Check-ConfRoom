@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
 <head>
@@ -30,7 +30,7 @@
 
 <div class="col">
 
-	<form name='login' action="<c:url value='/login' />" method='POST'>
+	<form name='login' action="<c:url value='/check-confroom/login' />" method='POST'>
 		<div class="container-1">
 	<input type="text" placeholder="Username" name="username"><br>
 	<input type="password" placeholder="Password" name="password"><br>
@@ -39,7 +39,10 @@
 		<input style="alignment: center" name="submit" type="submit" value="Login" />
 		<c:if test="${not empty error}"><div><span style="color:red;">${error}</span></div></c:if>
 		<c:if test="${not empty message}"><div><span style="color:red;">${message}</span></div></c:if>
-	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+	</form>
+	<form action="/check-confroom/">
+		<input style="alignment: center" name="submit" type="submit" value="Start Panel" />
 	</form>
 	</div>
 </div>

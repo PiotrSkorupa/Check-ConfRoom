@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="th" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
 <head>
@@ -19,7 +19,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="/static/fontawesome/fontawesome-all.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/resources/css/loadStyle.css" >
+    <link rel="stylesheet" type="text/css" href="/resources/css/loadStyle.css">
     <script>
         $(document).ready(function () {
             $(window).scroll(function () {
@@ -36,17 +36,19 @@
                 return false;
             });
         });
+
     </script>
     <style>
         body {
-            background-repeat:no-repeat;
-            -webkit-background-size:cover;
-            -moz-background-size:cover;
-            -o-background-size:cover;
-            background-size:cover;
-            background-position:center;
-            background-attachment:fixed;
+            background-repeat: no-repeat;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
+
         .navbar {
             margin-bottom: 0;
             border-radius: 0;
@@ -55,6 +57,26 @@
         footer {
             background-color: #f2f2f2;
             padding: 25px;
+        }
+
+        input[type=email], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #eaeaea;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #f7eff3;
+        }
+
+        input[type=search], select {
+            width: 20%;
+            padding: 5px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
     </style>
 </head>
@@ -68,38 +90,49 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/conf">Confrooms</a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/check-confroom/conf">Confrooms</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="${pageContext.request.contextPath}/home">Home</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/check-confroom/home">Home</a></li>
                 <li><a href="#">About</a></li>
             </ul>
 
             <ul class="nav navbar-nav">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-                Send report via email
-            </button>
-            <!-- Modal -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            <h4 class="modal-title" id="myModalLabel">Send report to:</h4>
-                        </div>
-                        <div class="modal-body">
-                            Patryk
-                            Piotrek
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="location.href='/conf/sendReport'">Save changes</button>
+                <!-- Button trigger modal -->
+                <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe"></iframe>
+                <form action="${pageContext.request.contextPath}/check-confroom/conf/sendReport" target="dummyframe">
+                    <button type="submit" class="btn btn-info" style="position: absolute; right: 10%;" data-toggle="modal"
+                            data-target="#myModal" type="button" onclick="'/check-confroom/conf'">Send report via email
+                    </button>
+                </form>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+
+                                <h4 class="modal-title" id="myModalLabel">Send report to:</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form:form action="${pageContext.request.contextPath}/check-confroom/conf/sendEmail"
+                                           method="get">
+                                    <input type="email" placeholder="enter email address here" id="email" name="email"/>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Send email</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </form:form>
+                            </div>
+                            <%
+                                String email = request.getParameter("email");
+                            %>
                         </div>
                     </div>
                 </div>
-            </div>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -116,21 +149,17 @@
 <div class="jumbotron">
     <div class="container text-center">
         <h2>Conference Rooms</h2>
-
         <p>
             <label for="Name">Search by name:</label>
         <form
-        <form:form action="${pageContext.request.contextPath}/conf/confRoomList/" method="get">
+        <form:form action="${pageContext.request.contextPath}/check-confroom/conf/confRoomList/" method="get">
             <input type="search" id="name" name="name"/>
             <button type="submit" class="btn btn-default">Search</button>
         </form:form>
         </form>
-        </p>
-
-        <p>
-            <label for="Name">Search by floor:</label>
+        <label for="Name">Search by floor:</label>
         <form
-        <form:form action="${pageContext.request.contextPath}/conf/confRoomListByFloor/" method="get">
+        <form:form action="${pageContext.request.contextPath}/check-confroom/conf/confRoomListByFloor/" method="get">
             <button type="submit" class="btn btn-default" name="floor" value="1">1</button>
             <button type="submit" class="btn btn-default" name="floor" value="2">2</button>
             <button type="submit" class="btn btn-default" name="floor" value="3">3</button>
@@ -139,14 +168,12 @@
             <button type="submit" class="btn btn-default" name="floor" value="6">6</button>
             <button type="submit" class="btn btn-default" name="floor" value="7">7</button>
             <button type="submit" class="btn btn-default" name="floor" value="8">8</button>
-            <button class="btn btn-default" onclick="location.href='/conf'" type="button">All</button>
+            <button class="btn btn-default" onclick="location.href='/check-confroom/conf'" type="button">All</button>
         </form:form>
-
         </form>
         </p>
     </div>
 </div>
-
 <div class="container-fluid bg-3 text-center">
     <div>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -186,17 +213,19 @@
                     <td>${tempconfRoomModel.markers ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
                     <td>${tempconfRoomModel.floorCondition ? '<i class="fa fa-check-circle-o" style="font-size:24px;color:green"></i>' : '<i class="fa fa-times-circle-o" style="font-size:24px;color:red"></i>'}</td>
                     <td>${tempconfRoomModel.comments}</td>
-                    <td><fmt:formatDate type = "both" dateStyle = "short" timeStyle = "short"
-                                         value = "${tempconfRoomModel.lastmodified}" /></td>
+                    <td><fmt:formatDate type="both" dateStyle="short" timeStyle="short"
+                                        value="${tempconfRoomModel.lastmodified}"/></td>
                     <td>${tempconfRoomModel.checkedby}</td>
 
-                    <td><a href="/conf/update?confRoomId=${tempconfRoomModel.id}" class="btn btn-success">Update</a>
+                    <td><a href="/check-confroom/conf/update?confRoomId=${tempconfRoomModel.id}"
+                           class="btn btn-success">Update</a>
                         <security:authorize access="hasRole('ADMIN')">
-                        <form:form action="/conf/delete?confRoomId=${tempconfRoomModel.id}" method="DELETE">
-                            <button onclick="if (!(confirm('Are you sure you want to delete this confRoom?'))) return false"
-                                    type="submit" class="btn btn-danger">DELETE
-                            </button>
-                        </form:form>
+                            <form:form action="/check-confroom/conf/delete?confRoomId=${tempconfRoomModel.id}"
+                                       method="DELETE">
+                                <button onclick="if (!(confirm('Are you sure you want to delete this confRoom?'))) return false"
+                                        type="submit" class="btn btn-danger">DELETE
+                                </button>
+                            </form:form>
                         </security:authorize>
                     </td>
                 </tr>
@@ -208,10 +237,17 @@
 </div>
 <br><br>
 </div>
-<p>Click <a href="${pageContext.request.contextPath}/home">here</a> to go Home</p>
 </br>
-<p>Click <a href="${pageContext.request.contextPath}/conf/saveConf">here</a> to add new Conference Room</p>
-
+<div class="col">
+    </form></a>
+    <a class="w3-bar-item w3-button">
+        <form>
+            <button class="btn btn-primary btn-lg" style="position: absolute; right: 4%;"
+                    onclick="location.href='/check-confroom/conf/saveConf'" type="button">Add new Conference Room
+            </button>
+        </form>
+    </a>
+</div>
 
 <br>
 <br>
@@ -222,14 +258,17 @@
 
 <div class="w3-bottom w3-hide-medium">
     <div class="w3-bar w3-white w3-center w3-padding-large w3-opacity-min w3-hover-opacity-off">
-        <a class="w3-bar-item w3-button"><form
-            <form:form action="${pageContext.request.contextPath}/conf/confRoomList/" method="get">
-                <input type="search" id="name" name="name"/>
+        <a class="w3-bar-item w3-button">
+            <form
+            <form:form action="${pageContext.request.contextPath}/check-confroom/conf/confRoomList/" method="get">
+                <input type="text" id="name" name="name"/>
                 <button type="submit" class="btn btn-default">Search</button>
             </form:form>
             </form></a>
-        <a class="w3-bar-item w3-button" ><form
-            <form:form action="${pageContext.request.contextPath}/conf/confRoomListByFloor/" method="get">
+        <a class="w3-bar-item w3-button">
+            <form
+            <form:form action="${pageContext.request.contextPath}/check-confroom/conf/confRoomListByFloor/"
+                       method="get">
                 <button type="submit" class="btn btn-default" name="floor" value="1">1</button>
                 <button type="submit" class="btn btn-default" name="floor" value="2">2</button>
                 <button type="submit" class="btn btn-default" name="floor" value="3">3</button>
@@ -238,17 +277,20 @@
                 <button type="submit" class="btn btn-default" name="floor" value="6">6</button>
                 <button type="submit" class="btn btn-default" name="floor" value="7">7</button>
                 <button type="submit" class="btn btn-default" name="floor" value="8">8</button>
-                <button class="btn btn-basic" onclick="location.href='/conf'" type="button">All</button>
+                <button class="btn btn-basic" onclick="location.href='/check-confroom/conf'" type="button">All</button>
             </form:form>
             </form></a>
-        <a class="w3-bar-item w3-button" ><form>
-            <button class="btn btn-info" onclick="location.href='/conf/downloadReport'" type="button">Generate Report</button>
-            </form></a>
-
-        <a class="w3-bar-item w3-button w3-hover-black w3-right"><a href="#" class="scrollup"><i class="fa fa-arrow-circle-o-up" style="font-size:48px;color:slategrey"></i></a></a>
+        <a class="w3-bar-item w3-button">
+            <form>
+                <button class="btn btn-info" onclick="location.href='/check-confroom/conf/downloadReport'"
+                        type="button">Generate Report
+                </button>
+            </form>
+        </a>
+        <a class="w3-bar-item w3-button w3-hover-black w3-right"><a href="#" class="scrollup"><i
+                class="fa fa-arrow-circle-o-up" style="font-size:48px;color:slategrey"></i></a></a>
     </div>
 </div>
-
 
 
 </body>
